@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: teacher-on-demand-db
+
+    environment:
+      POSTGRES_DB: teacher_on_demand
+      POSTGRES_USER: teacher
+      POSTGRES_PASSWORD: teacher123
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
