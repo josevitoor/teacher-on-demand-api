@@ -23,6 +23,8 @@ public class UsuarioService extends BaseService<Usuario, Long> {
     private final PessoaFisicaService pessoaFisicaService;
     private final InstituicaoEnsinoService instituicaoEnsinoService;
     private final ContratanteService contratanteService;
+    private final ProfessorEspecialidadeService professorEspecialidadeService;
+    private final DocumentoService documentoService;
 
     @Override
     protected BaseRepository<Usuario, Long> repository() {
@@ -52,7 +54,25 @@ public class UsuarioService extends BaseService<Usuario, Long> {
                     .valorHoraAula(request.getValorHoraAula())
                     .build();
 
-            professorService.save(professor);
+            professor = professorService.save(professor);
+
+            for (String especialidade : request.getEspecialidades()) {
+                ProfessorEspecialidade professorEspecialidade =
+                        ProfessorEspecialidade.builder()
+                                .professor(professor)
+                                .especialidade(especialidade)
+                                .build();
+
+                professorEspecialidadeService.save(professorEspecialidade);
+            }
+
+            Documento documento = Documento.builder()
+                    .professor(professor)
+                    .tipo(request.getDocumentoTipo())
+                    .arquivo(request.getDocumentoArquivo())
+                    .build();
+
+            documentoService.save(documento);
         }
 
         Contratante contratante = null;

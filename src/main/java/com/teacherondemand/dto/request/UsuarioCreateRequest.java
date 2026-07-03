@@ -23,4 +23,9 @@ public class UsuarioCreateRequest {
     private BigDecimal valorHoraAula;
 
     private String cnpj;
+
+    private List<String> especialidades;
+
+    private String documentoTipo;
+    private String documentoArquivo;
 }
