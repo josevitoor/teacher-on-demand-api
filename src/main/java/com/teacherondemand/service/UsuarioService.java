@@ -59,8 +59,11 @@ public class UsuarioService extends BaseService<Usuario, Long> {
             for (String especialidade : request.getEspecialidades()) {
                 ProfessorEspecialidade professorEspecialidade =
                         ProfessorEspecialidade.builder()
+                                .id(new ProfessorEspecialidadeId(
+                                        professor.getIdUsuario(),
+                                        especialidade
+                                ))
                                 .professor(professor)
-                                .especialidade(especialidade)
                                 .build();
 
                 professorEspecialidadeService.save(professorEspecialidade);

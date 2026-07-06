@@ -12,15 +12,11 @@ import lombok.*;
 @Builder
 public class DiaSemana {
 
-    @Id
-    @Column(name = "id_aula_mensal")
-    private Long idAulaMensal;
-
-    @Column(length = 30)
-    private String diaSemana;
+    @EmbeddedId
+    private DiaSemanaId id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId
+    @MapsId("idAulaMensal")
     @JoinColumn(name = "id_aula_mensal", nullable = false)
     private AulaMensal aulaMensal;
 }

@@ -14,14 +14,11 @@ import java.time.LocalDate;
 @Builder
 public class DataAula {
 
-    @Id
-    @Column(name = "id_aula")
-    private Long idAula;
-
-    private LocalDate dataAula;
+    @EmbeddedId
+    private DataAulaId id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId
+    @MapsId("idAula")
     @JoinColumn(name = "id_aula", nullable = false)
     private Aula aula;
 }

@@ -12,15 +12,11 @@ import lombok.*;
 @Builder
 public class ProfessorEspecialidade {
 
-    @Id
-    @Column(name = "id_professor")
-    private Long idProfessor;
+    @EmbeddedId
+    private ProfessorEspecialidadeId id;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @MapsId("idProfessor")
     @JoinColumn(name = "id_professor", nullable = false)
     private Professor professor;
-
-    @Column(length = 100, nullable = false)
-    private String especialidade;
 }
