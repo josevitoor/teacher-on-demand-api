@@ -1,13 +1,12 @@
 package com.teacherondemand.controller;
 
+import com.teacherondemand.dto.request.AgendamentoCreateRequest;
 import com.teacherondemand.dto.response.AgendaResponse;
+import com.teacherondemand.entity.Contrato;
 import com.teacherondemand.service.AgendaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,26 @@ public class AgendaController {
 
         return ResponseEntity.ok(
                 agendaService.getAgendaUsuario(idUsuario));
+    }
+
+    @PostMapping
+    public ResponseEntity<Contrato> criar(
+            @RequestBody AgendamentoCreateRequest request) {
+
+        return ResponseEntity.ok(agendaService.criar(request));
+    }
+
+    @PutMapping("/{id}/aprovar")
+    public ResponseEntity<Contrato> aprovar(
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(agendaService.aprovar(id));
+    }
+
+    @PutMapping("/{id}/recusar")
+    public ResponseEntity<Contrato> recusar(
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(agendaService.recusar(id));
     }
 }

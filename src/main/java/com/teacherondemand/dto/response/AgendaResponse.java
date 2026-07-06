@@ -1,5 +1,6 @@
 package com.teacherondemand.dto.response;
 
+import com.teacherondemand.constant.StatusContratoEnum;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -11,6 +12,8 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AgendaResponse {
+
+    private Long idContrato;
 
     private Long idAula;
 
@@ -28,5 +31,5 @@ public class AgendaResponse {
 
     private String servico;
 
-    private String statusContrato;
+    private StatusContratoEnum statusContrato;
 }

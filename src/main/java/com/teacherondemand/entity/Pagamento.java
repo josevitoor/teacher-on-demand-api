@@ -1,5 +1,7 @@
 package com.teacherondemand.entity;
 
+import com.teacherondemand.constant.MetodoPagamentoEnum;
+import com.teacherondemand.constant.StatusPagamentoEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,11 +26,13 @@ public class Pagamento {
 
     private LocalDate data;
 
-    @Column(length = 50)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private StatusPagamentoEnum status;
 
-    @Column(length = 50)
-    private String metodo;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private MetodoPagamentoEnum metodo;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_contrato", nullable = false)

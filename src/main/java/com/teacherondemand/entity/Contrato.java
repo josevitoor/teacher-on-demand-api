@@ -1,5 +1,6 @@
 package com.teacherondemand.entity;
 
+import com.teacherondemand.constant.StatusContratoEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,8 +19,9 @@ public class Contrato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idContrato;
 
-    @Column(length = 50, nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private StatusContratoEnum status;
 
     @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal valorTotal;

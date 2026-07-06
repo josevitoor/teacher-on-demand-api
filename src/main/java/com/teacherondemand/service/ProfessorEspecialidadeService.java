@@ -7,6 +7,8 @@ import com.teacherondemand.repository.ProfessorEspecialidadeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProfessorEspecialidadeService extends BaseService<ProfessorEspecialidade, ProfessorEspecialidadeId> {
@@ -16,5 +18,9 @@ public class ProfessorEspecialidadeService extends BaseService<ProfessorEspecial
     @Override
     protected BaseRepository<ProfessorEspecialidade, ProfessorEspecialidadeId> repository() {
         return repository;
+    }
+
+    public List<ProfessorEspecialidade> findByProfessorId(Long idProfessor) {
+        return repository.findByProfessorIdUsuario(idProfessor);
     }
 }
