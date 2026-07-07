@@ -7,8 +7,5 @@ import java.util.List;
 
 public interface DataAulaRepository extends BaseRepository<DataAula, DataAulaId> {
 
-    List<DataAula> findByAulaContratoProfessorIdUsuarioOrAulaContratoContratanteIdUsuarioOrderByIdDataAulaAscAulaHoraInicioAsc(
-            Long idProfessor,
-            Long idContratante
-    );
+    List<DataAula> findByAulaIdAulaOrderByIdDataAulaAsc(Long idAula);
 }

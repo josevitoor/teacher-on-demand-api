@@ -1,6 +1,7 @@
 package com.teacherondemand.dto.request;
 
 import com.teacherondemand.constant.MetodoPagamentoEnum;
+import com.teacherondemand.constant.TipoAulaEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class AgendamentoCreateRequest {
     private Long idContratante;
 
     private String tipoServico;
+    private TipoAulaEnum tipoAula;
     private String descricaoServico;
 
     private String endereco;
@@ -24,6 +26,10 @@ public class AgendamentoCreateRequest {
     private LocalTime horaFim;
 
     private List<LocalDate> datas;
+
+    private LocalDate dataVencimento;
+    private List<String> diasSemana;
+    private Integer qtdAulas;
 
     private BigDecimal valorTotal;
     private MetodoPagamentoEnum metodoPagamento;

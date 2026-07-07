@@ -6,6 +6,8 @@ import com.teacherondemand.repository.BaseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AulaService extends BaseService<Aula, Long> {
@@ -15,5 +17,13 @@ public class AulaService extends BaseService<Aula, Long> {
     @Override
     protected BaseRepository<Aula, Long> repository() {
         return repository;
+    }
+
+    public List<Aula> getAgendaUsuario(Long idUsuario) {
+        return repository
+                .findByContratoProfessorIdUsuarioOrContratoContratanteIdUsuarioOrderByIdAulaDesc(
+                        idUsuario,
+                        idUsuario
+                );
     }
 }

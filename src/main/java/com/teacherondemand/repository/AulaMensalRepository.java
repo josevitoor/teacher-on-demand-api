@@ -1,4 +1,7 @@
 package com.teacherondemand.repository;
 
-public interface AulaMensalRepository {
+import com.teacherondemand.entity.AulaMensal;
+
+public interface AulaMensalRepository extends BaseRepository<AulaMensal, Long> {
 }
+

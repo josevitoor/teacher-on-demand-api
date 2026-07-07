@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,22 +15,22 @@ import java.time.LocalTime;
 public class AgendaResponse {
 
     private Long idContrato;
-
     private Long idAula;
 
-    private LocalDate dataAula;
+    private String tipoAula;
+    private String servico;
+
+    private List<LocalDate> datas;
+
+    private LocalDate dataVencimento;
+    private List<String> diasSemana;
 
     private LocalTime horaInicio;
-
     private LocalTime horaFim;
-
     private String endereco;
 
     private String professor;
-
     private String contratante;
-
-    private String servico;
 
     private StatusContratoEnum statusContrato;
 }

@@ -20,11 +20,7 @@ public class DataAulaService extends BaseService<DataAula, DataAulaId> {
         return repository;
     }
 
-    public List<DataAula> getAgendaUsuario(Long idUsuario) {
-        return repository
-                .findByAulaContratoProfessorIdUsuarioOrAulaContratoContratanteIdUsuarioOrderByIdDataAulaAscAulaHoraInicioAsc(
-                        idUsuario,
-                        idUsuario
-                );
+    public List<DataAula> findByAula(Long idAula) {
+        return repository.findByAulaIdAulaOrderByIdDataAulaAsc(idAula);
     }
 }

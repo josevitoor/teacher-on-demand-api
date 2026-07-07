@@ -1,4 +1,7 @@
 package com.teacherondemand.repository;
 
-public interface AulaUnicaRepository {
+import com.teacherondemand.entity.AulaUnica;
+
+public interface AulaUnicaRepository extends BaseRepository<AulaUnica, Long> {
 }
+
